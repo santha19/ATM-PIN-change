@@ -1,0 +1,28 @@
+def change_pin(customer_id, current_pin):
+    attempts = 3
+    while attempts > 0:
+        entered_pin = int(input(f"Enter the current PIN for customer {customer_id}: "))
+        if entered_pin == current_pin:
+            new_pin = int(input(f"Enter the new PIN for customer {customer_id}: "))
+            current_pin = new_pin
+            print(f"PIN successfully changed for customer {customer_id}.")
+            break
+        else:
+            attempts -= 1
+            print(f"Incorrect PIN! You have {attempts} attempts remaining.")
+    else:
+        print(f"PIN change failed for customer {customer_id}. Too many incorrect attempts.")
+
+
+
+customer_pins = {
+    12345: 1234,
+    23456: 5678,
+    34567: 9012,
+    45678: 3456,
+    56789: 7890
+}
+
+
+for customer_id, pin in customer_pins.items():
+    change_pin(customer_id, pin)
